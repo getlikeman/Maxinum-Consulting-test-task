@@ -7,7 +7,12 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 async function enableMocking() {
     const {worker} = await import('./mocks/browser')
 
-    return worker.start()
+        return worker.start({
+        serviceWorker:{
+            url:'/testForm'
+        }
+    })
+
 }
 
 const queryClient = new QueryClient()
