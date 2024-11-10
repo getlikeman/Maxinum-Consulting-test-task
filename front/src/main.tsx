@@ -9,7 +9,7 @@ async function enableMocking() {
 
         return worker.start({
         serviceWorker:{
-            url:'/testForm'
+            url:'/testForm/mockServiceWorker.js'
         }
     })
 
