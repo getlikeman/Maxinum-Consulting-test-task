@@ -1,12 +1,12 @@
 import {http, HttpResponse} from 'msw'
-type transaction={category:string,comment:string,dateTime:string,sum:number}
+type transaction={category:string,comment:string,dateTime:string,sum:number,author?:string}
 let data=[
     {
         "id": 2,
         "dateTime": "2022-01-20T12:01:30.543Z",
         "author": "string",
         "sum": 0,
-        "category": "string",
+        "category": "Периферия",
         "comment": "string"
     },
     {
@@ -14,18 +14,17 @@ let data=[
         "dateTime": "2022-01-20T12:01:30.543Z",
         "author": "string",
         "sum": 0,
-        "category": "string",
+        "category": "Прочие",
         "comment": "string"
     }
 ]
-// @ts-ignore
 export const handlers = [http.get(`https://example.com/transactions`,() =>{
     return HttpResponse.json(data)
 }),
 http.post('https://example.com/transactions',async ({request })=>{
-    const res = await request.json()
-    data.push({id:Math.floor(Math.random() * 30) ,author: 'test',...res as transaction})
+    let res = await request.json()
+    data.push({...res as transaction,id:Math.floor(Math.random() * 30) ,author:'test'})
     return HttpResponse.json(res,{status:201})
 })
-
 ]
+
