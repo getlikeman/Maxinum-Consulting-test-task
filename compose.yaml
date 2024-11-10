@@ -1,0 +1,17 @@
+services:
+  back:
+    build: ./back/
+    environment:
+      NODE_ENV: production
+    volumes:
+      - /back/node_modules
+    ports:
+      - 3000:3000
+  front:
+    build: ./front/
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5173:5173
+    volumes:
+      - /front/node_modules
