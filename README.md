@@ -1,5 +1,5 @@
 
-## This project made for test 
+## This project made for Maxinum Consulting as test task
 
 Now to start:
 ```docker compose up```
